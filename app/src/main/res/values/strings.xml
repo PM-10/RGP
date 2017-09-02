@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RgpTest</string>
+    <string name="hint_input_username">search ...</string>
+</resources>
