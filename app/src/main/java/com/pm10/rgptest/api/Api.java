@@ -25,7 +25,6 @@ public class Api {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.interceptors().add(httpLoggingInterceptor);
-        builder.interceptors().add(new NetworkInterceptor());
         OkHttpClient okHttpClient = builder.build();
 
         Retrofit retrofit = new Retrofit.Builder()

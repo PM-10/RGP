@@ -1,10 +1,6 @@
 package com.pm10.rgptest.api;
 
-import android.app.Activity;
-import android.widget.Toast;
-
-import com.pm10.rgptest.ui.base.BaseActivity;
-import com.pm10.rgptest.util.ActivityUtils;
+import com.pm10.rgptest.util.ErrorUtils;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -16,14 +12,7 @@ public class NetworkRequest {
 
     //에러 핸들링
     private static Consumer<Throwable> defaultNetworkError = throwable -> {
-
-        Activity currentActivity = ActivityUtils.getCurrentActivity();
-
-        if (currentActivity instanceof BaseActivity)
-            ((BaseActivity) currentActivity).loadingComplete();
-
-        Toast.makeText(currentActivity, throwable.toString(), Toast.LENGTH_SHORT).show();
-        throwable.printStackTrace();
+        ErrorUtils.showErrorToast(throwable);
     };
 
     public static <T> Disposable request(Observable<T> observable, Consumer<? super T> consumer) {
